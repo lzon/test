@@ -24,7 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//改于2019.5
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, View.OnTouchListener {
 
     private int rW = 102;
