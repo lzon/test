@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:id="@+id/lanyaPanle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:onClick="startScan"
+            android:text="扫描" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:onClick="startConnect"
+            android:text="连接" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@android:color/transparent"
+            android:onClick="startRead"
+            android:text="读取" />
+
+        <TextView
+            android:id="@+id/device_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="未连接"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/recieve_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收到"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/xiala"
+        android:layout_width="25dp"
+        android:layout_height="35dp"
+        android:layout_alignStart="@+id/maincontent"
+        android:layout_alignTop="@id/maincontent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/icon_xiala"
+        android:text="" />
+
+    <Button
+        android:id="@+id/jianweixianshi"
+        android:layout_width="58dp"
+        android:layout_height="23dp"
+        android:layout_alignEnd="@+id/maincontent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="1dp"
+        android:background="@drawable/img_xs"
+        android:onClick="jianweixianshi"
+        android:text="键位显示"
+        android:textColor="@android:color/white"
+        android:textSize="11sp" />
+
+    <RelativeLayout
+        android:id="@+id/maincontent"
+        android:layout_width="380dp"
+        android:layout_height="258dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/main_content_bg">
+
+        <LinearLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="115dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/tuijiantu"
+                    android:layout_width="22dp"
+                    android:layout_height="27dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="33dp"
+                    android:src="@drawable/icon_tj" />
+
+                <Button
+                    android:id="@+id/tuijian"
+                    android:layout_width="115dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/img_wxz"
+                    android:paddingLeft="38dp"
+                    android:text="推荐"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="115dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/zidingyitu"
+                    android:layout_width="22dp"
+                    android:layout_height="27dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/icon_ajk" />
+
+                <Button
+                    android:id="@+id/zidingyi"
+                    android:layout_width="115dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/img_wxz"
+                    android:paddingLeft="16dp"
+                    android:text="自定义"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="115dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/wodejianweitu"
+                    android:layout_width="22dp"
+                    android:layout_height="27dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/icon_wd" />
+
+                <Button
+                    android:id="@+id/wodejianwei"
+                    android:layout_width="115dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/img_wxz"
+                    android:paddingLeft="12dp"
+                    android:text="我的键位"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/zhong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent">
+
+            <Button
+                android:id="@+id/changgui"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/buttonselector"
+                android:gravity="center"
+                android:onClick="onClickChangGui"
+                android:text="常规"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/zuhe"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/changgui"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:onClick="onClickZuHe"
+                android:text="组合"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/tishigantanhao"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/icon_tishi"
+                android:onClick="onClickZuHe"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/qinkong"
+            android:layout_width="28dp"
+            android:layout_height="91dp"
+            android:layout_below="@+id/zhong"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/img_qkjw"
+            android:orientation="vertical">
+            >
+
+            <Button
+                android:id="@+id/qin"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="onClickClean"
+                android:text="清"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/kong"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="onClickClean"
+                android:text="空"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/jian"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="onClickClean"
+                android:text="键"
+                android:textColor="@android:color/white" />
+
+            <Button
+                android:id="@+id/wei"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:onClick="onClickClean"
+                android:text="位"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/scroll_changguicontent"
+            android:layout_width="match_parent"
+            android:layout_height="145dp"
+            android:layout_below="@+id/zhong"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/qinkong"
+            android:background="@android:color/transparent"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_changgu_lb"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/lb"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgu_lt"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_lt"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgu_ls"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_thumb_ls"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgu_rb"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rb"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgu_rt"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rt"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgu_rs"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting__rs"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_changgui_xiangzuo"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_left"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_xiangyou"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_right"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_xiangshang"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_up"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_xiangxia"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_down"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_back"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_back"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_changgui_m1"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m1"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_m2"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m2"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_m3"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m3"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_m4"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m4"
+                        android:text="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_changgui_a"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_a"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_b"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_b"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_x"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_x"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_y"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_y"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_l"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_l"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_changgui_r"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_r"
+                        android:text="" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/scroll_zuhecontent"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"
+            android:layout_below="@+id/zhong"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
+            android:layout_toLeftOf="@+id/qinkong"
+            android:visibility="invisible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="155dp"
+                android:layout_marginLeft="9dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_zuhe_lb_a"
+                        android:layout_width="34dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_lb_a"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_lb_b"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_lb_b"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_lt_a"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/lt_a"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_lt_b"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/lt_b"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_rb_a"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rb_a"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_rb_b"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rb_b"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_zuhe_lb_x"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_lb_x"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_lb_y"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/lb_y"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_lt_x"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_lt_x"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_lt_y"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_lt_y"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_rb_x"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rb_x"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_rb_y"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rb_y"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_zuhe_m1_a"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m1_a"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m1_b"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m1_b"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m2_a"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m2_a"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m2_b"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m2_b"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_rt_a"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rt_a"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_rt_b"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rt_b"
+                        android:text="" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_zuhe_m1_x"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m1_x"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m1_y"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m1_y"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m2_x"
+                        android:layout_width="37dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m2_x"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m2_y"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m2_y"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_rt_x"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rt_x"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_rt_y"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_rt_y"
+                        android:text="" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_zuhe_m3_a"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m3_a"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m3_b"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m3_b"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m4_a"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m4_a"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m4_b"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m4_b"
+                        android:text="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_zuhe_m3_x"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m3_x"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m3_y"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m3_y"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m4_x"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m4_x"
+                        android:text="" />
+
+                    <Button
+                        android:id="@+id/button_zuhe_m4_y"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/setting_key_m4_y"
+                        android:text="" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/maincontent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/guanbi"
+            android:layout_width="77dp"
+            android:layout_height="29dp"
+            android:layout_marginRight="27dp"
+            android:background="@drawable/img_button_grade"
+            android:onClick="onClickGuanBi"
+            android:text="关闭" />
+
+        <Button
+            android:id="@+id/queding"
+            android:layout_width="77dp"
+            android:layout_height="29dp"
+            android:background="@drawable/img_button_blue"
+            android:text="确定" />
+    </LinearLayout>
+
+</RelativeLayout>
