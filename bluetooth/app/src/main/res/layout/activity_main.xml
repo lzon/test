@@ -18,6 +18,15 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/holo_orange_dark"
+            android:onClick="openBle"
+            android:text="打开蓝牙" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
             android:background="@android:color/holo_orange_dark"
             android:onClick="startScan"
             android:text="扫描" />
@@ -53,6 +62,12 @@
             android:textSize="18sp" />
 
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lanyaPanle" />
 
     <LinearLayout
         android:layout_width="wrap_content"

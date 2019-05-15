@@ -33,11 +33,10 @@
         <activity
             android:name="coms.example.administrator.ble.MainActivity"
             android:configChanges="orientation|keyboard"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
