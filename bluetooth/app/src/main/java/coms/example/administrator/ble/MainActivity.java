@@ -35,8 +35,6 @@ import java.util.UUID;
 
 import coms.example.administrator.ble.mode.KeyValue;
 import coms.example.administrator.ble.mode.MapJianWei;
-import coms.example.administrator.ble.mode.Postion;
-import coms.example.administrator.ble.mode.RelateProp;
 
 public class MainActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "UUIUI____";
