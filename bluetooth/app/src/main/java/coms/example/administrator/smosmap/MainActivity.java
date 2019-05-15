@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
         mapJianWei.setFooViewAlpha("alpha");
         listKeyValue = new ArrayList<>();
         init();
-        getPpi();
         mOrientationListener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL) {
             @Override
             public void onOrientationChanged(int orientation) {
@@ -94,16 +93,6 @@ public class MainActivity extends AppCompatActivity {
             Log.v(DEBUG_TAG, "Cannot detect orientation");
             mOrientationListener.disable();
         }
-    }
-
-    private void getPpi() {
-        DisplayMetrics metric = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metric);
-        int width = metric.widthPixels;  // 屏幕宽度（像素）
-        int height = metric.heightPixels;  // 屏幕高度（像素）
-        int midu = metric.densityDpi;
-        float bizhi = metric.density;
-        Log.e("like", "输出：" + "height = " + height + "width=" + width + "dpi=" + midu + "bizhi=" + bizhi);
     }
 
     @Override
