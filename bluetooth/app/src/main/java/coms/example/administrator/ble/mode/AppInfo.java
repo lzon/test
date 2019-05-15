@@ -1,4 +1,4 @@
-package coms.example.administrator.smosmap.mode;
+package coms.example.administrator.ble.mode;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;

@@ -1,6 +1,5 @@
-package coms.example.administrator.smosmap.mode;
+package coms.example.administrator.ble.mode;
 
-import java.security.Key;
 import java.util.List;
 
 public class AKeyTemplate {

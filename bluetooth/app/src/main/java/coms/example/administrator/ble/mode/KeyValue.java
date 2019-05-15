@@ -1,4 +1,4 @@
-package coms.example.administrator.smosmap.mode;
+package coms.example.administrator.ble.mode;
 
 public class KeyValue {
     private String keyName;

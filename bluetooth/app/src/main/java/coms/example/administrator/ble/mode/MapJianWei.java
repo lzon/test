@@ -1,6 +1,4 @@
-package coms.example.administrator.smosmap.mode;
-
-import java.util.List;
+package coms.example.administrator.ble.mode;
 
 public class MapJianWei {
     private String templateName;

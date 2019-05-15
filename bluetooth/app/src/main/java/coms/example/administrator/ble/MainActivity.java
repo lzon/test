@@ -1,4 +1,4 @@
-package coms.example.administrator.smosmap;
+package coms.example.administrator.ble;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -19,7 +19,6 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
@@ -28,33 +27,19 @@ import android.view.KeyEvent;
 import android.view.OrientationEventListener;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import coms.example.administrator.smosmap.mode.AKeyTemplate;
-import coms.example.administrator.smosmap.mode.KeyValue;
-import coms.example.administrator.smosmap.mode.MapJianWei;
-import coms.example.administrator.smosmap.mode.Postion;
-import coms.example.administrator.smosmap.mode.RelateProp;
+import coms.example.administrator.ble.mode.KeyValue;
+import coms.example.administrator.ble.mode.MapJianWei;
+import coms.example.administrator.ble.mode.Postion;
+import coms.example.administrator.ble.mode.RelateProp;
 
 public class MainActivity extends AppCompatActivity {
     private static final String DEBUG_TAG = "UUIUI____";
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {"android.permission.READ_EXTfERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"};
-
-    private int statusBarHeight;
-    private int rW = 102;
-    private int rH = 102;
-    private AKeyTemplate keyTemplate;
 
     @Override
     public boolean onKeyLongPress(int keyCode, KeyEvent event) {
@@ -63,8 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
     RelativeLayout relativeLayoutMain;
     private OrientationEventListener mOrientationListener;
-    private float downX;
-    private float downY;
     private MapJianWei mapJianWei;
     private List<KeyValue> listKeyValue;
 
@@ -73,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mapJianWei = new MapJianWei();
-        keyTemplate = new AKeyTemplate();
         mapJianWei.setCompositeMode("1");
         mapJianWei.setDescription("xx");
         mapJianWei.setTemplateName("0");
@@ -130,33 +112,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @SuppressLint("WrongConstant")
     private void init() {
         deviceName = (TextView) findViewById(R.id.device_name);
         textView1 = (TextView) findViewById(R.id.recieve_text);
         final BluetoothManager bluetoothManager =
                 (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
+        //蓝牙设备不可以用， 就是没有开， 跳到开启界面去开启。
         if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, 1);
         }
-        relativeLayoutMain = findViewById(R.id.main);
-
     }
 
 
-    public static List<KeyValue> removeDuplicate(List<KeyValue> list) {
-        for (int i = 0; i < list.size() - 1; i++) {
-            for (int j = list.size() - 1; j > i; j--) {
-                if (list.get(j).getKeyName().equals(list.get(i).getKeyName())) {
-                    list.remove(j);
-                }
-            }
-        }
-        return list;
-    }
-
+    //点击确定发给蓝牙发送消息
     public void onClickQueDing(View view) {
         sendDateBluetooth(mapJianWei);
     }
@@ -574,26 +544,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void addKeyToMap(View v, int x, int y) {
-        KeyValue keyValue = new KeyValue();
-        keyValue.setKeyName(v.getTag().toString());
-        keyValue.setMode("0");
-        Postion postion = new Postion();
-        postion.setX(x);
-        postion.setY(y);
-        keyValue.setPostion(postion);
-        RelateProp relateProp = new RelateProp();
-        relateProp.setKeyName(v.getTag().toString());
-        relateProp.setSeriesClickTimes("seriesClickTimes");
-        relateProp.setValue("0");
-        keyValue.setRelateProp(relateProp);
-        if (keyValue != null) {
-            listKeyValue.add(keyValue);
-            keyTemplate.setList(listKeyValue);
-            mapJianWei.setKeyTemplate(keyTemplate);
-        }
-
-    }
 
 
     private BluetoothAdapter mBluetoothAdapter;
@@ -610,14 +560,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView deviceName;
     private TextView textView1;
     private BluetoothDevice mDevice;
-
-    public void connectlanya(View view) {
-        if (findViewById(R.id.lanyaPanle).getVisibility() == View.VISIBLE) {
-            findViewById(R.id.lanyaPanle).setVisibility(View.INVISIBLE);
-        } else {
-            findViewById(R.id.lanyaPanle).setVisibility(View.VISIBLE);
-        }
-    }
 
     final BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
         @Override
